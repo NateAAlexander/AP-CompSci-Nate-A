@@ -2,18 +2,21 @@ import java.util.Scanner;
 import java.io.*;
 import javax.swing.JFileChooser;
 
+
 /**
- * BaseConverter opens a data file, reads, converts numbers, prints
+ * This project, base coverter, will open a data file, read it, converts number, and print.
  * @version Tuesday 11/23/2021
  * @author 22alexander
- * Help from Michael Yancy and https://www.codejava.net/java-se/swing/show-simple-open-file-dialog-using-jfilechooser .
+ * Help from Michael Yancy and https://www.codejava.net/java-se/swing/show-simple-open-file-dialog-using-jfilechooser.
  */
+
 
 public class BaseConverter {// Constructor for class.
     public BaseConverter(){
-
     }
+    
     // Convert a String num in fromBase to base-10 int.
+    
     public int strToInt(String num, String fromBase){
         int base = Integer.parseInt(fromBase);
         String alpha ="0123456789ABCDEF";
@@ -24,7 +27,9 @@ public class BaseConverter {// Constructor for class.
         }
         return sum;
     }
+    
     // Convert a base-10 int to a String number of base toBase.
+    
     public String intToStr(int num, int toBase){
         String alpha = "0123456789ABCDEF";
         String toNum = "";
@@ -39,9 +44,11 @@ public class BaseConverter {// Constructor for class.
 
     /** Opens the file stream, inputs data one line at a time, converts, prints
      *the result to the console window and writes data to the output stream.
-     * Also includes extra: JFileChooser lets the user choose the file to be converted
+     * Extra: JFileChooser lets the user choose the file.
      * Help from https://www.codejava.net/java-se/swing/show-simple-open-file-dialog-using-jfilechooser
      * */
+    
+    
     public void inputConvertPrintWrite() {
         Scanner sc = null;
         PrintWriter pw = null;
@@ -64,7 +71,6 @@ public class BaseConverter {// Constructor for class.
                 } else if (toBase < 2 || toBase > 16) {
                     System.out.println("Invalid output base " + toBase);
                 } else {
-                    // print statement to the console
                     System.out.println(line[0] + " base " + line[1] + " = " + intToStr(strToInt(line[0], line[1]), toBase) + " base " + toBase);
                     pw.println(line[0] + "\t" + line[1] + "\t" + intToStr(strToInt(line[0], line[1]), toBase) + "\t" + toBase);
                 }
@@ -78,9 +84,8 @@ public class BaseConverter {// Constructor for class.
             pw.close();
     }
 
-    /**
-     * Main method for class BaseConverter.
-     */
+    /** Main method */
+    
     public static void main(String[] args) {
         BaseConverter app = new BaseConverter();
         app.inputConvertPrintWrite();
